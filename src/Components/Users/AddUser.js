@@ -13,7 +13,11 @@ const AddUser = (props) => {
         <input id="username" type="text" />
         <label htmlFor="studyplan">Study Plan</label>
         <input id="studyplan" type="text" />
-        <button type="submit">Add User</button>
+        <label htmlFor="avatar">Chose Your Studdy Buddy!</label>
+        <input id="avatar" type="text" />
+        <label htmlFor="timer">Set Timer</label>
+        <input id="timer" type="time" />
+        <button type="submit">Start Session</button>
         <button onClick={props.onClose}>Close</button>
       </form>
     </Modal>
