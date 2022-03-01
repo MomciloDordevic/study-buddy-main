@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { RefObject, useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import AddUser from "../../Users/AddUser";
 
-function Header() {
+type Props = {
+  modalRef: RefObject<HTMLDivElement>;
+};
+
+function Header({modalRef}: Props) {
   const [formIsShown, setFormIsShown] = useState(false);
+
 
   const showFormHandler = () => {
     setFormIsShown(true);
@@ -18,7 +23,7 @@ function Header() {
       <div className={styles.content}>
         <div className={styles.newSession}>
           <button onClick={showFormHandler}>Start Session</button>
-          {formIsShown && <AddUser onClose={hideFormHandler}/>}
+          {formIsShown && <AddUser modalRef={modalRef} onClose={hideFormHandler}/>}
         </div>
         <div className={styles.boxes}>
           <button>

@@ -8,7 +8,7 @@ import styles from "./Timer.module.css";
 //   someFunc: (str: string) => void;
 // }
 
-function Timer({ timerArgs, myEnumType }: TimerProps) {
+function Timer({ timeArray, myEnumType }: TimerProps) {
   const one = EMyEnum.ONE;
   // const timeList = timerArgs;
   const timeList = [0.2, 0.3, 20, 5, 10];
