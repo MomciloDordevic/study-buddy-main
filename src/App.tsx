@@ -23,9 +23,9 @@ function App() {
             <Header modalRef={modalRef} />
           </div>
           <div className={styles.contentContainer}>
+            <AuthForm />
             <h1>Study Session - ASMR with Eira</h1>
             <StudyVideo />
-            <AuthForm />
             <Timer timeArray={timeArray} />
           </div>
         </div>
