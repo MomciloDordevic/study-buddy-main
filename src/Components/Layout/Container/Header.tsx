@@ -6,24 +6,25 @@ type Props = {
   modalRef: RefObject<HTMLDivElement>;
 };
 
-function Header({modalRef}: Props) {
+function Header({ modalRef }: Props) {
   const [formIsShown, setFormIsShown] = useState(false);
-
 
   const showFormHandler = () => {
     setFormIsShown(true);
-  }
+  };
 
   const hideFormHandler = () => {
     setFormIsShown(false);
-  }
+  };
 
   return (
     <div className={styles.header}>
       <div className={styles.content}>
         <div className={styles.newSession}>
           <button onClick={showFormHandler}>Start Session</button>
-          {formIsShown && <AddUser modalRef={modalRef} onClose={hideFormHandler}/>}
+          {formIsShown && (
+            <AddUser modalRef={modalRef} onClose={hideFormHandler} />
+          )}
         </div>
         <div className={styles.boxes}>
           <button>
