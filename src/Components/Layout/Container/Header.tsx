@@ -1,12 +1,17 @@
-import React, { RefObject, useEffect, useState } from "react";
+import React, { RefObject, useContext, useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import AddUser from "../../Users/AddUser";
+import AuthContext from "../../Store/AuthContext";
 
 type Props = {
   modalRef: RefObject<HTMLDivElement>;
 };
 
 function Header({ modalRef }: Props) {
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn =authCtx.isLoggedIn;
+
   const [formIsShown, setFormIsShown] = useState(false);
 
   const showFormHandler = () => {
@@ -27,15 +32,18 @@ function Header({ modalRef }: Props) {
           )}
         </div>
         <div className={styles.boxes}>
-          <button>
-            <i className="fas fa-user"></i>
-          </button>
-          <button>
-            <i className="fas fa-tasks"></i>
-          </button>
-          <button>
-            <i className="fas fa-clipboard-list"></i>
-          </button>
+          {!isLoggedIn && (
+            <button>Login</button>
+          )}
+          {isLoggedIn && (
+            <><button>
+              <i className="fas fa-user"></i>
+            </button><button>
+                <i className="fas fa-tasks"></i>
+              </button><button>
+                <i className="fas fa-clipboard-list"></i>
+              </button></>
+          )}
           {/* <i className="fas fa-stopwatch"></i>
           <i className="fas fa-check"></i> */}
         </div>
