@@ -18,6 +18,10 @@ function Header({ modalRef }: Props) {
 
   const isLoggedIn = authCtx.isLoggedIn;
 
+  const logoutHandler = () => {
+    authCtx.logout();
+  }
+
   const [formIsShown, setFormIsShown] = useState(false);
 
   const showFormHandler = () => {
@@ -40,7 +44,7 @@ function Header({ modalRef }: Props) {
         <div className={styles.boxes}>
           {!isLoggedIn && <button>Login</button>}
           {isLoggedIn && (
-            <><Link to="/profile">
+            <><Link to="/userprofile">
               <button>
                 <i className="fas fa-user"></i>
               </button>
@@ -51,6 +55,7 @@ function Header({ modalRef }: Props) {
               <button>
                 <i className="fas fa-clipboard-list"></i>
               </button>
+              <button onClick={logoutHandler}>Logout</button>
             </>
           )}
           {/* <i className="fas fa-stopwatch"></i>
