@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import StudyVideo from "./Components/StudyVideo/Container/StudyVideo";
 import Header from "./Components/Layout/Container/Header";
 import Timer from "./Components/Timer/Container.tsx/Timer";
 import FormProvider from "./Components/Store/FormProvider";
 import AuthForm from "./Components/Auth/AuthForm";
+import ProfileForm from "./Components/Profile/ProfileForm";
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
@@ -22,6 +24,9 @@ function App() {
           <div className={styles.headerContainer}>
             <Header modalRef={modalRef} />
           </div>
+          <Routes>
+            <Route path="/profile" element={<ProfileForm />} />
+          </Routes>
           <div className={styles.contentContainer}>
             <AuthForm />
             <h1>Study Session - ASMR with Eira</h1>

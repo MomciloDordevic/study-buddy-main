@@ -5,11 +5,14 @@ import './Assets/Themes/css-variables.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './Components/Store/AuthContext';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <AuthContextProvider>
   <React.StrictMode>
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </React.StrictMode>
   </AuthContextProvider>,
   document.getElementById('root')

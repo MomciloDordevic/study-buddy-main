@@ -2,6 +2,12 @@ import React, { RefObject, useContext, useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import AddUser from "../../Users/AddUser";
 import AuthContext from "../../Store/AuthContext";
+import {BrowserRouter,
+Routes,
+Route,
+Link
+} from "react-router-dom";
+import ProfileForm from "../../Profile/ProfileForm";
 
 type Props = {
   modalRef: RefObject<HTMLDivElement>;
@@ -10,7 +16,7 @@ type Props = {
 function Header({ modalRef }: Props) {
   const authCtx = useContext(AuthContext);
 
-  const isLoggedIn =authCtx.isLoggedIn;
+  const isLoggedIn = authCtx.isLoggedIn;
 
   const [formIsShown, setFormIsShown] = useState(false);
 
@@ -32,17 +38,20 @@ function Header({ modalRef }: Props) {
           )}
         </div>
         <div className={styles.boxes}>
-          {!isLoggedIn && (
-            <button>Login</button>
-          )}
+          {!isLoggedIn && <button>Login</button>}
           {isLoggedIn && (
-            <><button>
-              <i className="fas fa-user"></i>
-            </button><button>
+            <><Link to="/profile">
+              <button>
+                <i className="fas fa-user"></i>
+              </button>
+              </Link>
+              <button>
                 <i className="fas fa-tasks"></i>
-              </button><button>
+              </button>
+              <button>
                 <i className="fas fa-clipboard-list"></i>
-              </button></>
+              </button>
+            </>
           )}
           {/* <i className="fas fa-stopwatch"></i>
           <i className="fas fa-check"></i> */}
