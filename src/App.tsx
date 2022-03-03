@@ -32,14 +32,14 @@ function App() {
             {authCtx.isLoggedIn && (
               <Route path="/userprofile" element={<UserProfile />} />
             )}
-            <Route path="/profile" element={<ProfileForm />} />
+            <Route path="/profileform" element={<ProfileForm />} />
+            <Route path="/authform" element={<AuthForm />} />
           </Routes>
-          <div className={styles.contentContainer}>
-            <AuthForm />
+          {authCtx.isLoggedIn &&<div className={styles.contentContainer}>
             <h1>Study Session - ASMR with Eira</h1>
             <StudyVideo />
             <Timer timeArray={timeArray} />
-          </div>
+          </div>}
         </div>
       </FormProvider>
     </div>

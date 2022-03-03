@@ -36,13 +36,13 @@ function Header({ modalRef }: Props) {
     <div className={styles.header}>
       <div className={styles.content}>
         <div className={styles.newSession}>
-          <button onClick={showFormHandler}>Start Session</button>
+          {isLoggedIn && <button onClick={showFormHandler}>Start Session</button>}
           {formIsShown && (
             <AddUser modalRef={modalRef} onClose={hideFormHandler} />
           )}
         </div>
         <div className={styles.boxes}>
-          {!isLoggedIn && <button>Login</button>}
+          {!isLoggedIn && <Link to="/authform"><button>Login</button></Link>}
           {isLoggedIn && (
             <><Link to="/userprofile">
               <button>

@@ -15,7 +15,6 @@ const AddUser = (props) => {
   return (
     <Modal modalRef={props.modalRef} onClose={props.onClose}>
       <form onSubmit={addUserHandler}>
-        <input id="video"></input>
         <label htmlFor="username">Username</label>
         <input id="username" type="text" name="username" />
         <label htmlFor="studyplan">Study Plan</label>
