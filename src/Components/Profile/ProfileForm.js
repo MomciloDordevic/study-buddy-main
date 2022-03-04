@@ -34,6 +34,9 @@ const ProfileForm = () => {
       // assumption: Always succeeds!
 
       navigate("/");
+    }).catch((err) => {
+      alert('Something went wrong!')
+      console.log(err);
     });
   };
 

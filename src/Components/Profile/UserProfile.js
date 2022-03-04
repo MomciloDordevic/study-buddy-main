@@ -1,6 +1,5 @@
-import ProfileForm from "./ProfileForm";
 import classes from "./UserProfile.module.css";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
   return (
