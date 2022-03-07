@@ -5,14 +5,21 @@ import classes from "./AddUser.module.css";
 const AddUser = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredNameTouched, setEnterdNameTouched] = useState(false);
+
+  const [enteredUrl, setEnteredUrl] = useState('');
+  const [enteredUrlTouched, setEnteredUrlTouched] = useState(false);
+
   // const [formIsValid, setFormIsValid] = useState(false);
 
   const enteredNameIsValid = enteredName.trim() !== "";
-  const nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+
+  const enteredUrlIsValid = enteredUrl.includes('.');
+  const enteredUrlIsInvalid = !enteredUrlIsValid && enteredUrlTouched;
 
   let formIsValid = false;
 
-  if (enteredNameIsValid) {
+  if (enteredNameIsValid && enteredUrlIsValid) {
     formIsValid = true;
   }
 
@@ -29,9 +36,17 @@ const AddUser = (props) => {
     setEnteredName(event.target.value);
   };
 
+  const urlInputChangeHandler = (event) => {
+    setEnteredUrl(event.target.value);
+  }
+
   const nameInputBlurHandler = (event) => {
     setEnterdNameTouched(true);
   };
+
+  const urlInputBlurHandler = (event) => {
+    setEnteredUrlTouched(true);
+  }
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
@@ -46,6 +61,9 @@ const AddUser = (props) => {
 
     setEnteredName("");
     setEnterdNameTouched(false);
+
+    setEnteredUrl('');
+    setEnteredUrlTouched(false);
   };
 
   // const addUserHandler = (event) => {
@@ -71,7 +89,7 @@ const AddUser = (props) => {
               onBlur={nameInputBlurHandler}
               value={enteredName}
             />
-            {nameInputIsValid && (
+            {nameInputIsInvalid && (
               <p className={classes.errortext}>Name must not be empty!</p>
             )}
           </div>
@@ -80,10 +98,11 @@ const AddUser = (props) => {
             <input
               type="url"
               id="url"
-              onChange={nameInputChangeHandler}
-              onBlur={nameInputBlurHandler}
+              onChange={urlInputChangeHandler}
+              onBlur={urlInputBlurHandler}
+              value={enteredUrl}
             />
-            {nameInputIsValid && (
+            {enteredUrlIsInvalid && (
               <p className={classes.errortext}>Please enter a valid URL!</p>
             )}
           </div>
