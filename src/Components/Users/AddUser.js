@@ -2,6 +2,8 @@ import Modal from "../UI/Modal";
 import classes from "./AddUser.module.css";
 
 import useInput from "../Hooks/use-input";
+import AvatarModal from "../UI/AvatarModal";
+import { useState } from 'react';
 
 const AddUser = (props) => {
   const {
@@ -21,6 +23,16 @@ const AddUser = (props) => {
     inputBlurHandler: urlBlurHandler,
     reset: resetUrlInput,
   } = useInput((value) => value.includes("."));
+
+  const [avatarFormIsShown, setAvatarFormIsShown] = useState(false);
+
+  const showAvatarFormHandler = () => {
+    setAvatarFormIsShown(true);
+  };
+
+  const hideAvatarFormHandler = () => {
+    setAvatarFormIsShown(false);
+  };
 
   // const [enteredName, setEnteredName] = useState("");
   // const [enteredNameTouched, setEnterdNameTouched] = useState(false);
@@ -131,6 +143,10 @@ const AddUser = (props) => {
           <div>
             <label htmlFor="name">Chose Your Studdy Buddy</label>
             <input type="text" id="name" />
+            <button onClick={showAvatarFormHandler}>Study Buddy</button>
+          {avatarFormIsShown && (
+            <AvatarModal modalRef={props.modalRef} onClose={hideAvatarFormHandler} />
+          )}
           </div>
           <div>
             <label htmlFor="name">Schedule Timer</label>
