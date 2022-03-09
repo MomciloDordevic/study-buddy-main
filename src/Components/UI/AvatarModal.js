@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import ReactDOM from "react-dom";
 
+import image from '../../Assets/Avatars/1.png';
 import classes from "./AvatarModal.module.css";
 
 const Backdrop = (props) => {
@@ -10,12 +11,21 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
-      <div className={classes.content}>{props.children}</div>
-      <a href="">
-        <div class="image">
-          <img url="../../Assets/Avatars/1.png" width="100" height="100" alt=""></img>
+      <h2>Pick Your Studdy Buddy</h2>
+      <div>{props.children}</div>
+        <div className={classes.content}>
+          <img src={image} width="130" height="120" alt="Testing" />
+          <img src="" width="130" height="120" alt="Testing"></img>
+          <img src="./1.png" width="130" height="120" alt="Testing"></img>
+          <img src="Assets/Avatars/1.png" width="130" height="120" alt="Testing" />
+          <img src="http://localhost:3577/static/media/1.d31d459d.png" width="130" height="120" alt="Testing" />
+          <img src="src/Assets/Avatars/1.png" width="130" height="120" alt="Testing" />
+          <img src="../../Assets/Avatars/1.png" width="130" height="120" alt="Testing" />
+          <img src="/Assets/Avatars/1.png" width="130" height="120" alt="Testing"></img>
+          <div>
+            <button onClick={props.onClose}>Close</button>
+          </div>
         </div>
-      </a>
     </div>
   );
 };
