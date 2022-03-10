@@ -140,7 +140,7 @@ const AddUser = (props) => {
               <p className={classes.errortext}>Please enter a valid URL!</p>
             )}
           </div>
-          <div>
+          <div className={classes.buttondiv}>
             <button onClick={showAvatarFormHandler}>Chose your Studdy Buddy</button>
           {avatarFormIsShown && (
             <AvatarModal modalRef={props.modalRef} onClose={hideAvatarFormHandler} />
@@ -150,7 +150,7 @@ const AddUser = (props) => {
             <label htmlFor="name">Schedule Timer</label>
             <input type="time" id="name" />
           </div>
-          <div>
+          <div className={classes.submitbuttondiv}>
             <button disabled={!formIsValid} className={classes.submitbutton}>
               Submit
             </button>

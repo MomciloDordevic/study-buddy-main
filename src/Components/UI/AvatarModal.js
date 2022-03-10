@@ -48,8 +48,8 @@ const ModalOverlay = (props) => {
 
   return (
     <div className={classes.modal}>
-      <h2>Pick Your Studdy Buddy</h2>
       <div>{props.children}</div>
+      <h2>Pick Your Studdy Buddy</h2>
       <div className={classes.content}>
         {imageList.map((each, i) => (
           <img
