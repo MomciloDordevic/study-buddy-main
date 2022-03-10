@@ -9,6 +9,7 @@ import AuthForm from "./Components/Auth/AuthForm";
 import ProfileForm from "./Components/Profile/ProfileForm";
 import UserProfile from "./Components/Profile/UserProfile";
 import AuthContext from "./Components/Store/AuthContext";
+import NewTimer from "./Components/Timer/Container.tsx/NewTimer";
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
@@ -39,6 +40,7 @@ function App() {
             <h1>Study Session - ASMR with Eira</h1>
             <StudyVideo />
             <Timer timeArray={timeArray} />
+            <NewTimer />
           </div>}
         </div>
       </FormProvider>

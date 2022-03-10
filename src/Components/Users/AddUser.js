@@ -141,9 +141,7 @@ const AddUser = (props) => {
             )}
           </div>
           <div>
-            <label htmlFor="name">Chose Your Studdy Buddy</label>
-            <input type="text" id="name" />
-            <button onClick={showAvatarFormHandler}>Study Buddy</button>
+            <button onClick={showAvatarFormHandler}>Chose your Studdy Buddy</button>
           {avatarFormIsShown && (
             <AvatarModal modalRef={props.modalRef} onClose={hideAvatarFormHandler} />
           )}

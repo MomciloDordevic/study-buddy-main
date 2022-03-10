@@ -9,6 +9,11 @@ import image5 from "../../Assets/Avatars/5.png";
 import image6 from "../../Assets/Avatars/6.png";
 import image7 from "../../Assets/Avatars/7.png";
 import image8 from "../../Assets/Avatars/8.png";
+import image9 from "../../Assets/Avatars/9.png";
+import image10 from "../../Assets/Avatars/10.png";
+import image11 from "../../Assets/Avatars/11.png";
+import image12 from "../../Assets/Avatars/12.png";
+
 import classes from "./AvatarModal.module.css";
 
 const imageList = [
@@ -20,6 +25,10 @@ const imageList = [
   image6,
   image7,
   image8,
+  image9,
+  image10,
+  image11,
+  image12,
 ];
 
 const Backdrop = (props) => {
@@ -30,13 +39,12 @@ const ModalOverlay = (props) => {
   const [selectedAvatar, setSelectedAvatar] = useState(false);
 
   const showSelectedAvatar = () => {
-    setSelectedAvatar(true)
-  }
+    setSelectedAvatar(true);
+  };
 
   const hideSelectedAvatar = () => {
     setSelectedAvatar(false);
-  }
-
+  };
 
   return (
     <div className={classes.modal}>
@@ -49,8 +57,7 @@ const ModalOverlay = (props) => {
             src={each}
             width="140"
             height="120"
-            alt=""
-            onClick={showSelectedAvatar}
+            alt="Avatar Images"
           />
         ))}
         {/* <img src={image1} width="140" height="120" alt="" />
