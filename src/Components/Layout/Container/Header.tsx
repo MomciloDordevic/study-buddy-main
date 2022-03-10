@@ -1,13 +1,10 @@
-import React, { RefObject, useContext, useEffect, useState } from "react";
+import React, { RefObject, useContext, useState } from "react";
 import styles from "./Header.module.css";
 import AddUser from "../../Users/AddUser";
 import AuthContext from "../../Store/AuthContext";
-import {BrowserRouter,
-Routes,
-Route,
+import {
 Link
 } from "react-router-dom";
-import ProfileForm from "../../Profile/ProfileForm";
 
 type Props = {
   modalRef: RefObject<HTMLDivElement>;

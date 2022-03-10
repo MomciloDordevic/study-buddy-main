@@ -1,5 +1,5 @@
 import React, { useRef, useState, useContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import StudyVideo from "./Components/StudyVideo/Container/StudyVideo";
 import Header from "./Components/Layout/Container/Header";
