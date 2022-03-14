@@ -33,9 +33,9 @@ function NewTimer() {
     if (!timeLeft[interval]) {
       return;
     }
-
+    const randomNumber = Math.floor(Math.random() * 1000)
     timerComponents.push(
-      <span>
+      <span key={randomNumber}>
         {timeLeft[interval]} {interval}{" "}
       </span>
     );

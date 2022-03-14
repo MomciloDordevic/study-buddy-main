@@ -35,15 +35,25 @@ function App() {
               <Route path="/userprofile" element={<UserProfile />} />
             )}
             <Route path="/profileform" element={<ProfileForm />} />
+
             <Route path="/authform" element={<AuthForm />} />
+            <Route
+              path="/"
+              element={
+                <React.Fragment>
+                  {authCtx.isLoggedIn && (
+                    <div className={styles.contentContainer}>
+                      <h1>Study Session - ASMR with Eira</h1>
+                      <StudyVideo />
+                      <Timer timeArray={timeArray} />
+                      <NewNewTimer />
+                      <NewTimer />
+                    </div>
+                  )}
+                </React.Fragment>
+              }
+            ></Route>
           </Routes>
-          {authCtx.isLoggedIn &&<div className={styles.contentContainer}>
-            <h1>Study Session - ASMR with Eira</h1>
-            <StudyVideo />
-            <Timer timeArray={timeArray} />
-            <NewNewTimer />
-            <NewTimer />
-          </div>}
         </div>
       </FormProvider>
     </div>

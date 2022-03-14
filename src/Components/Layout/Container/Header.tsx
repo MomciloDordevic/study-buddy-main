@@ -5,6 +5,7 @@ import AuthContext from "../../Store/AuthContext";
 import {
 Link
 } from "react-router-dom";
+import LoginForm from "../../../Pages/LoginPage";
 
 type Props = {
   modalRef: RefObject<HTMLDivElement>;
@@ -53,6 +54,7 @@ function Header({ modalRef }: Props) {
                 <i className="fas fa-clipboard-list"></i>
               </button>
               <button onClick={logoutHandler}>Logout</button>
+              <LoginForm />
             </>
           )}
           {/* <i className="fas fa-stopwatch"></i>

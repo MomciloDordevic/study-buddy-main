@@ -1,35 +1,11 @@
 import { Fragment, useState } from "react";
 import ReactDOM from "react-dom";
 
-import image1 from "../../Assets/Avatars/1.png";
-import image2 from "../../Assets/Avatars/2.png";
-import image3 from "../../Assets/Avatars/3.png";
-import image4 from "../../Assets/Avatars/4.png";
-import image5 from "../../Assets/Avatars/5.png";
-import image6 from "../../Assets/Avatars/6.png";
-import image7 from "../../Assets/Avatars/7.png";
-import image8 from "../../Assets/Avatars/8.png";
-import image9 from "../../Assets/Avatars/9.png";
-import image10 from "../../Assets/Avatars/10.png";
-import image11 from "../../Assets/Avatars/11.png";
-import image12 from "../../Assets/Avatars/12.png";
+import { imageArray } from "../../Utils/AvatarData";
 
 import classes from "./AvatarModal.module.css";
 
-const imageList = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  image10,
-  image11,
-  image12,
-];
+
 
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onClose} />;
@@ -46,15 +22,17 @@ const ModalOverlay = (props) => {
     setSelectedAvatar(false);
   };
 
+  
+
   return (
     <div className={classes.modal}>
       <div>{props.children}</div>
       <h2>Pick Your Studdy Buddy</h2>
       <div className={classes.content}>
-        {imageList.map((each, i) => (
+        {imageArray.map((each) => (
           <img
-            key={i}
-            src={each}
+            key={each.id}
+            src={each.image}
             width="140"
             height="120"
             alt="Avatar Images"
