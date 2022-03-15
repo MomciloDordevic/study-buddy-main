@@ -2,9 +2,7 @@ import React, { RefObject, useContext, useState } from "react";
 import styles from "./Header.module.css";
 import AddUser from "../../Users/AddUser";
 import AuthContext from "../../Store/AuthContext";
-import {
-Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import LoginForm from "../../../Pages/LoginPage";
 
 type Props = {
@@ -18,7 +16,7 @@ function Header({ modalRef }: Props) {
 
   const logoutHandler = () => {
     authCtx.logout();
-  }
+  };
 
   const [formIsShown, setFormIsShown] = useState(false);
 
@@ -34,18 +32,30 @@ function Header({ modalRef }: Props) {
     <div className={styles.header}>
       <div className={styles.content}>
         <div className={styles.newSession}>
-          {isLoggedIn && <button onClick={showFormHandler}>Start Session</button>}
+          {isLoggedIn && (
+            <button onClick={showFormHandler}>Start Session</button>
+          )}
           {formIsShown && (
             <AddUser modalRef={modalRef} onClose={hideFormHandler} />
           )}
         </div>
         <div className={styles.boxes}>
-          {!isLoggedIn && <Link to="/authform"><button>Login</button></Link>}
+          {!isLoggedIn && (
+            <Link to="/authform">
+              <button>Login</button>
+            </Link>
+          )}
           {isLoggedIn && (
-            <><Link to="/userprofile">
-              <button>
-                <i className="fas fa-user"></i>
-              </button>
+            <>
+              <Link to="/">
+                <button>
+                  <i className="fas fa-home"></i>
+                </button>
+              </Link>
+              <Link to="/userprofile">
+                <button>
+                  <i className="fas fa-user"></i>
+                </button>
               </Link>
               <button>
                 <i className="fas fa-tasks"></i>
@@ -54,7 +64,12 @@ function Header({ modalRef }: Props) {
                 <i className="fas fa-clipboard-list"></i>
               </button>
               <button onClick={logoutHandler}>Logout</button>
-              <LoginForm />
+              {/* <LoginForm />
+              <Link to="/authform">
+                <button>
+                  Login
+                </button>
+              </Link> */}
             </>
           )}
           {/* <i className="fas fa-stopwatch"></i>

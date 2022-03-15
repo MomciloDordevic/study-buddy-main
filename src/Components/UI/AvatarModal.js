@@ -16,13 +16,12 @@ const ModalOverlay = (props) => {
 
   const showSelectedAvatar = () => {
     setSelectedAvatar(true);
+    console.log('Clicked!')
   };
 
   const hideSelectedAvatar = () => {
     setSelectedAvatar(false);
   };
-
-  
 
   return (
     <div className={classes.modal}>
@@ -31,6 +30,7 @@ const ModalOverlay = (props) => {
       <div className={classes.content}>
         {imageArray.map((each) => (
           <img
+            onClick={showSelectedAvatar}
             key={each.id}
             src={each.image}
             width="140"
