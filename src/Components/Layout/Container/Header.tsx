@@ -3,7 +3,6 @@ import styles from "./Header.module.css";
 import AddUser from "../../Users/AddUser";
 import AuthContext from "../../Store/AuthContext";
 import { Link } from "react-router-dom";
-import LoginForm from "../../../Pages/LoginPage";
 
 type Props = {
   modalRef: RefObject<HTMLDivElement>;
@@ -28,6 +27,14 @@ function Header({ modalRef }: Props) {
     setFormIsShown(false);
   };
 
+  const saveUserDataHandler = (enteredUserData: Props) => {
+    const userData = {
+      ...enteredUserData,
+      id: Math.random().toString(),
+    };
+    console.log(userData);
+  };
+
   return (
     <div className={styles.header}>
       <div className={styles.content}>
@@ -36,7 +43,7 @@ function Header({ modalRef }: Props) {
             <button onClick={showFormHandler}>Start Session</button>
           )}
           {formIsShown && (
-            <AddUser modalRef={modalRef} onClose={hideFormHandler} />
+            <AddUser modalRef={modalRef} onClose={hideFormHandler} onSaveUserData={saveUserDataHandler}/>
           )}
         </div>
         <div className={styles.boxes}>

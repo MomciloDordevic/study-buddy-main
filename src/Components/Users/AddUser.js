@@ -22,7 +22,7 @@ const AddUser = (props) => {
     valueChangeHandler: urlChangeHandler,
     inputBlurHandler: urlBlurHandler,
     reset: resetUrlInput,
-  } = useInput((value) => value.includes("."));
+  } = useInput((value) => value.trim() !== "");
 
   const [avatarFormIsShown, setAvatarFormIsShown] = useState(false);
 
@@ -82,17 +82,20 @@ const AddUser = (props) => {
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
+    const userData = {
+      name: enteredName,
+      url: enteredUrl,
+    }
+
     // setEnterdNameTouched(true);
 
     if (!enteredNameIsValid) {
       return;
     }
 
-    console.log(enteredName);
-
     // setEnteredName("");
     // setEnterdNameTouched(false);
-
+    props.onSaveUserData(userData);
     resetNameInput();
     resetUrlInput();
 
@@ -130,7 +133,7 @@ const AddUser = (props) => {
           <div>
             <label htmlFor="url">Study Video</label>
             <input
-              type="url"
+              type="text"
               id="url"
               onChange={urlChangeHandler}
               onBlur={urlBlurHandler}

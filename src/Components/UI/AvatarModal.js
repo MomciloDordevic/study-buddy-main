@@ -14,9 +14,9 @@ const Backdrop = (props) => {
 const ModalOverlay = (props) => {
   const [selectedAvatar, setSelectedAvatar] = useState(false);
 
-  const showSelectedAvatar = () => {
+  const showSelectedAvatar = (event) => {
     setSelectedAvatar(true);
-    console.log('Clicked!')
+    console.log(event.target.value)
   };
 
   const hideSelectedAvatar = () => {
@@ -52,7 +52,6 @@ const ModalOverlay = (props) => {
 };
 
 const AvatarModal = (props) => {
-  console.log(props.modalRef);
 
   const portalElement = props.modalRef.current;
 

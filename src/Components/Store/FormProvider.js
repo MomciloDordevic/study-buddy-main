@@ -3,7 +3,7 @@ import FormContext from "./FormContext";
 const FormProvider = (props) => {
   const formContext = {
     username: "",
-    studyplan: "",
+    url: "",
     timer: [],
     studybuddy: {},
     clearForm: () => {},

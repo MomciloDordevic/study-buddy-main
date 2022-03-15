@@ -17,7 +17,6 @@ const ModalOverlay = (props) => {
 
 
 const Modal = (props) => {
-  console.log(props.modalRef)
 
   const portalElement = props.modalRef.current;
 

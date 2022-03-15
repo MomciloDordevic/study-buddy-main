@@ -11,6 +11,7 @@ import UserProfile from "./Components/Profile/UserProfile";
 import AuthContext from "./Components/Store/AuthContext";
 import NewTimer from "./Components/Timer/Container.tsx/NewTimer";
 import NewNewTimer from "./Components/Timer/Container.tsx/NewNewTimer";
+import NewSession from "./Components/NewSession/NewSession";
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
@@ -21,6 +22,7 @@ function App() {
   const setScheduleArray = (value: number[]) => {
     setTimeArray(value);
   };
+  
 
   return (
     <div>
@@ -48,6 +50,7 @@ function App() {
                       <Timer timeArray={timeArray} />
                       <NewNewTimer />
                       <NewTimer />
+                      <NewSession></NewSession>
                     </div>
                   )}
                 </React.Fragment>
