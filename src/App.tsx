@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import StudyVideo from "./Components/StudyVideo/Container/StudyVideo";
@@ -12,9 +12,11 @@ import AuthContext from "./Components/Store/AuthContext";
 import NewTimer from "./Components/Timer/Container.tsx/NewTimer";
 import NewNewTimer from "./Components/Timer/Container.tsx/NewNewTimer";
 import NewSession from "./Components/NewSession/NewSession";
+import { imageArray } from "./Utils/AvatarData";
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
+  const [selectedAvatar, setSelectedAvatar] = useState<number>(0);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const authCtx = useContext(AuthContext);
@@ -22,6 +24,33 @@ function App() {
   const setScheduleArray = (value: number[]) => {
     setTimeArray(value);
   };
+
+
+  const onSelectAvatar = (id: number) => {
+    setSelectedAvatar(id);
+
+    console.log("App.tsx", id)
+  }
+
+  
+
+  //  const [userData, setUserData] = useState([]);
+
+  // const saveUserDataHandler = (uName: string, uUrl: string) => {
+  //   setUserData((prevUserData: string[]) => {
+  //     return [
+  //       ...prevUserData,
+  //       { name: uName, age: uUrl, id: Math.random().toString() },
+  //     ];
+  //   });
+  // };
+
+  const getAvatar = () => {
+    const currentAvatar = imageArray.find(image => image.id === selectedAvatar)
+    return (
+      <img src={currentAvatar?.image}></img>
+    )
+  }
   
 
   return (
@@ -30,7 +59,8 @@ function App() {
       <FormProvider>
         <div className={styles.app}>
           <div className={styles.headerContainer}>
-            <Header modalRef={modalRef} />
+            <Header modalRef={modalRef} onSelectAvatar={onSelectAvatar}/>
+            {getAvatar()}
           </div>
           <Routes>
             {authCtx.isLoggedIn && (
@@ -47,10 +77,10 @@ function App() {
                     <div className={styles.contentContainer}>
                       <h1>Study Session - ASMR with Eira</h1>
                       <StudyVideo />
+                      <NewSession modalRef={modalRef} user={[]} />
                       <Timer timeArray={timeArray} />
                       <NewNewTimer />
                       <NewTimer />
-                      <NewSession></NewSession>
                     </div>
                   )}
                 </React.Fragment>

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react"
 
 import AddUser from "../Users/AddUser";
+import classes from "./NewSession.module.css"
 
 const NewSession = (props) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -24,9 +25,16 @@ const NewSession = (props) => {
   }
 
   return (
-    <div>
-      {!isEditing && <button onClick={startEditingHandler}>Testing</button>}
-      {isEditing && <AddUser onSaveUserData={saveUserDataHandler} onCancel={stopEditingHandler} />}
+    <div className={classes.users}>
+      {!isEditing && <button type="submit" onClick={startEditingHandler}>New Session</button>}
+      {isEditing && <AddUser modalRef={props.modalRef} onSaveUserData={saveUserDataHandler} onCancel={stopEditingHandler} />}
+      <ul>
+      {props.user.map((user) => (
+        <li>
+          {user.name} {user.url}
+        </li>
+      ))}
+      </ul>
     </div>
   );
 };

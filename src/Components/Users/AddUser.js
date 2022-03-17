@@ -24,6 +24,9 @@ const AddUser = (props) => {
     reset: resetUrlInput,
   } = useInput((value) => value.trim() !== "");
 
+  console.log(props.onSelectAvatar)
+
+
   const [avatarFormIsShown, setAvatarFormIsShown] = useState(false);
 
   const showAvatarFormHandler = () => {
@@ -146,7 +149,7 @@ const AddUser = (props) => {
           <div className={classes.buttondiv}>
             <button onClick={showAvatarFormHandler}>Chose your Studdy Buddy</button>
           {avatarFormIsShown && (
-            <AvatarModal modalRef={props.modalRef} onClose={hideAvatarFormHandler} />
+            <AvatarModal modalRef={props.modalRef} onClose={hideAvatarFormHandler} onSelectAvatar={(id) => props.onSelectAvatar(id)} />
           )}
           </div>
           <div>

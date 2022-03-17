@@ -6,9 +6,10 @@ import { Link } from "react-router-dom";
 
 type Props = {
   modalRef: RefObject<HTMLDivElement>;
+  onSelectAvatar: (id: number) => void;
 };
 
-function Header({ modalRef }: Props) {
+function Header({ modalRef, onSelectAvatar }: Props) {
   const authCtx = useContext(AuthContext);
 
   const isLoggedIn = authCtx.isLoggedIn;
@@ -35,6 +36,17 @@ function Header({ modalRef }: Props) {
     console.log(userData);
   };
 
+  // const [userData, setUserData] = useState([]);
+
+  // const saveUserDataHandler = (uName: string, uUrl: string) => {
+  //   setUserData((prevUserData: string[]) => {
+  //     return [
+  //       ...prevUserData,
+  //       { name: uName, age: uUrl, id: Math.random().toString() },
+  //     ];
+  //   });
+  // };
+
   return (
     <div className={styles.header}>
       <div className={styles.content}>
@@ -43,7 +55,7 @@ function Header({ modalRef }: Props) {
             <button onClick={showFormHandler}>Start Session</button>
           )}
           {formIsShown && (
-            <AddUser modalRef={modalRef} onClose={hideFormHandler} onSaveUserData={saveUserDataHandler}/>
+            <AddUser modalRef={modalRef} onClose={hideFormHandler} onSaveUserData={saveUserDataHandler} onSelectAvatar={(id: number) => onSelectAvatar(id)}/>
           )}
         </div>
         <div className={styles.boxes}>

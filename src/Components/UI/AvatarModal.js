@@ -5,18 +5,18 @@ import { imageArray } from "../../Utils/AvatarData";
 
 import classes from "./AvatarModal.module.css";
 
-
-
 const Backdrop = (props) => {
   return <div className={classes.backdrop} onClick={props.onClose} />;
 };
 
 const ModalOverlay = (props) => {
+  
   const [selectedAvatar, setSelectedAvatar] = useState(false);
 
-  const showSelectedAvatar = (event) => {
+  const showSelectedAvatar = (id) => {
     setSelectedAvatar(true);
-    console.log(event.target.value)
+    // console.log(id);
+    props.onSelectAvatar(id);
   };
 
   const hideSelectedAvatar = () => {
@@ -30,7 +30,7 @@ const ModalOverlay = (props) => {
       <div className={classes.content}>
         {imageArray.map((each) => (
           <img
-            onClick={showSelectedAvatar}
+            onClick={() => showSelectedAvatar(each.id)}
             key={each.id}
             src={each.image}
             width="140"
@@ -52,8 +52,8 @@ const ModalOverlay = (props) => {
 };
 
 const AvatarModal = (props) => {
-
   const portalElement = props.modalRef.current;
+  console.log(props.onSelectAvatar)
 
   return (
     <Fragment>
@@ -62,7 +62,7 @@ const AvatarModal = (props) => {
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay>{props.children}</ModalOverlay>,
+        <ModalOverlay onSelectAvatar={(id) => props.onSelectAvatar(id)}>{props.children}</ModalOverlay>,
         portalElement
       )}
     </Fragment>
