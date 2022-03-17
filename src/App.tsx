@@ -60,7 +60,6 @@ function App() {
         <div className={styles.app}>
           <div className={styles.headerContainer}>
             <Header modalRef={modalRef} onSelectAvatar={onSelectAvatar}/>
-            {getAvatar()}
           </div>
           <Routes>
             {authCtx.isLoggedIn && (
@@ -77,7 +76,8 @@ function App() {
                     <div className={styles.contentContainer}>
                       <h1>Study Session - ASMR with Eira</h1>
                       <StudyVideo />
-                      <NewSession modalRef={modalRef} user={[]} />
+                      <NewSession modalRef={modalRef} user={[]} onSelectAvatar={onSelectAvatar} />
+                      {getAvatar()}
                       <Timer timeArray={timeArray} />
                       <NewNewTimer />
                       <NewTimer />

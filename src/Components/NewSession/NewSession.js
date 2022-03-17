@@ -1,8 +1,8 @@
 import React from "react";
-import { useState } from "react"
+import { useState } from "react";
 
 import AddUser from "../Users/AddUser";
-import classes from "./NewSession.module.css"
+import classes from "./NewSession.module.css";
 
 const NewSession = (props) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -10,7 +10,7 @@ const NewSession = (props) => {
   const saveUserDataHandler = (enteredUserData) => {
     const userData = {
       ...enteredUserData,
-      id: Math.random().toString()
+      id: Math.random().toString(),
     };
     props.onSaveUserData(userData);
     setIsEditing(false);
@@ -18,22 +18,34 @@ const NewSession = (props) => {
 
   const startEditingHandler = () => {
     setIsEditing(true);
-  }
+  };
 
   const stopEditingHandler = () => {
     setIsEditing(false);
-  }
+  };
 
   return (
     <div className={classes.users}>
-      {!isEditing && <button type="submit" onClick={startEditingHandler}>New Session</button>}
-      {isEditing && <AddUser modalRef={props.modalRef} onSaveUserData={saveUserDataHandler} onCancel={stopEditingHandler} />}
+      {!isEditing && (
+        <button type="submit" onClick={startEditingHandler}>
+          New Session
+        </button>
+      )}
+      {isEditing && (
+        <AddUser
+          modalRef={props.modalRef}
+          onSelectAvatar={props.onSelectAvatar}
+          onSaveUserData={saveUserDataHandler}
+          onCancel={stopEditingHandler}
+          onClose={props.onClose}
+        />
+      )}
       <ul>
-      {props.user.map((user) => (
-        <li>
-          {user.name} {user.url}
-        </li>
-      ))}
+        {props.user.map((user) => (
+          <li>
+            {user.name} {user.url}
+          </li>
+        ))}
       </ul>
     </div>
   );
