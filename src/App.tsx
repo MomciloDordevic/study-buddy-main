@@ -13,6 +13,7 @@ import NewTimer from "./Components/Timer/Container.tsx/NewTimer";
 import NewNewTimer from "./Components/Timer/Container.tsx/NewNewTimer";
 import NewSession from "./Components/NewSession/NewSession";
 import { imageArray } from "./Utils/AvatarData";
+import { isPropertySignature } from "typescript";
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
@@ -25,16 +26,11 @@ function App() {
     setTimeArray(value);
   };
 
-
   const onSelectAvatar = (id: number) => {
     setSelectedAvatar(id);
 
-    console.log("App.tsx", id)
-  }
-
-  
-
-  //  const [userData, setUserData] = useState([]);
+    console.log("App.tsx", id);
+  };
 
   // const saveUserDataHandler = (uName: string, uUrl: string) => {
   //   setUserData((prevUserData: string[]) => {
@@ -46,12 +42,11 @@ function App() {
   // };
 
   const getAvatar = () => {
-    const currentAvatar = imageArray.find(image => image.id === selectedAvatar)
-    return (
-      <img src={currentAvatar?.image}></img>
-    )
-  }
-  
+    const currentAvatar = imageArray.find(
+      (image) => image.id === selectedAvatar
+    );
+    return <img src={currentAvatar?.image}></img>;
+  };
 
   return (
     <div>
@@ -59,7 +54,7 @@ function App() {
       <FormProvider>
         <div className={styles.app}>
           <div className={styles.headerContainer}>
-            <Header modalRef={modalRef} onSelectAvatar={onSelectAvatar}/>
+            <Header modalRef={modalRef} onSelectAvatar={onSelectAvatar} />
           </div>
           <Routes>
             {authCtx.isLoggedIn && (
@@ -76,7 +71,11 @@ function App() {
                     <div className={styles.contentContainer}>
                       <h1>Study Session - ASMR with Eira</h1>
                       <StudyVideo />
-                      <NewSession modalRef={modalRef} user={[]} onSelectAvatar={onSelectAvatar} />
+                      <NewSession
+                        modalRef={modalRef}
+                        user={[]}
+                        onSelectAvatar={onSelectAvatar}
+                      />
                       {getAvatar()}
                       <Timer timeArray={timeArray} />
                       <NewNewTimer />

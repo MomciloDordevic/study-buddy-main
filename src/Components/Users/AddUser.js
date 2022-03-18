@@ -3,7 +3,7 @@ import classes from "./AddUser.module.css";
 
 import useInput from "../Hooks/use-input";
 import AvatarModal from "../UI/AvatarModal";
-import { useState } from 'react';
+import { useState } from "react";
 
 const AddUser = (props) => {
   const {
@@ -24,8 +24,7 @@ const AddUser = (props) => {
     reset: resetUrlInput,
   } = useInput((value) => value.trim() !== "");
 
-  console.log(props.onSelectAvatar)
-
+  console.log(props.onSelectAvatar);
 
   const [avatarFormIsShown, setAvatarFormIsShown] = useState(false);
 
@@ -88,7 +87,9 @@ const AddUser = (props) => {
     const userData = {
       name: enteredName,
       url: enteredUrl,
-    }
+    };
+
+    console.log(userData);
 
     // setEnterdNameTouched(true);
 
@@ -147,10 +148,16 @@ const AddUser = (props) => {
             )}
           </div>
           <div className={classes.buttondiv}>
-            <button onClick={showAvatarFormHandler}>Chose your Studdy Buddy</button>
-          {avatarFormIsShown && (
-            <AvatarModal modalRef={props.modalRef} onClose={hideAvatarFormHandler} onSelectAvatar={(id) => props.onSelectAvatar(id)} />
-          )}
+            <button onClick={showAvatarFormHandler}>
+              Chose your Studdy Buddy
+            </button>
+            {avatarFormIsShown && (
+              <AvatarModal
+                modalRef={props.modalRef}
+                onClose={hideAvatarFormHandler}
+                onSelectAvatar={(id) => props.onSelectAvatar(id)}
+              />
+            )}
           </div>
           <div>
             <label htmlFor="name">Schedule Timer</label>

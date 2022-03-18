@@ -63,6 +63,7 @@ function Header({ modalRef, onSelectAvatar }: Props) {
             />
           )}
         </div>
+
         <div className={styles.boxes}>
           {!isLoggedIn && (
             <Link to="/authform">

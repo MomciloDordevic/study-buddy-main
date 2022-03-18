@@ -39,6 +39,7 @@ const NewSession = (props) => {
           onClose={stopEditingHandler}
         />
       )}
+      <div>
       <ul>
         {props.user.map((user) => (
           <li>
@@ -46,6 +47,7 @@ const NewSession = (props) => {
           </li>
         ))}
       </ul>
+      </div>
     </div>
   );
 };
