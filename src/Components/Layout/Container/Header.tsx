@@ -55,7 +55,12 @@ function Header({ modalRef, onSelectAvatar }: Props) {
             <button onClick={showFormHandler}>Start Session</button>
           )}
           {formIsShown && (
-            <AddUser modalRef={modalRef} onClose={hideFormHandler} onSaveUserData={saveUserDataHandler} onSelectAvatar={(id: number) => onSelectAvatar(id)}/>
+            <AddUser
+              modalRef={modalRef}
+              onClose={hideFormHandler}
+              onSaveUserData={saveUserDataHandler}
+              onSelectAvatar={(id: number) => onSelectAvatar(id)}
+            />
           )}
         </div>
         <div className={styles.boxes}>

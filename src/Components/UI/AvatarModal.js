@@ -10,7 +10,6 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-  
   const [selectedAvatar, setSelectedAvatar] = useState(false);
 
   const showSelectedAvatar = (id) => {
@@ -19,8 +18,9 @@ const ModalOverlay = (props) => {
     props.onSelectAvatar(id);
   };
 
-  const hideSelectedAvatar = () => {
+  const hideSelectedAvatar = (id) => {
     setSelectedAvatar(false);
+    props.onSelectAvatar(id);
   };
 
   return (
@@ -44,16 +44,17 @@ const ModalOverlay = (props) => {
           <img src={image4} width="140" height="120" alt="" />
           <img src={image5} width="140" height="120" alt="" /> */}
       </div>
-      <div>
-        <button onClick={props.onClose}>Close</button>
-      </div>
+        <div>
+          <button onClick={props.onClose}>Close with props</button>
+          <button onClick={hideSelectedAvatar}>Remove Avatar</button>
+        </div>
     </div>
   );
 };
 
 const AvatarModal = (props) => {
   const portalElement = props.modalRef.current;
-  console.log(props.onSelectAvatar)
+  console.log(props.onSelectAvatar);
 
   return (
     <Fragment>
@@ -62,7 +63,9 @@ const AvatarModal = (props) => {
         portalElement
       )}
       {ReactDOM.createPortal(
-        <ModalOverlay onSelectAvatar={(id) => props.onSelectAvatar(id)}>{props.children}</ModalOverlay>,
+        <ModalOverlay onClose={props.onClose} onSelectAvatar={(id) => props.onSelectAvatar(id)}>
+          {props.children}
+        </ModalOverlay>,
         portalElement
       )}
     </Fragment>

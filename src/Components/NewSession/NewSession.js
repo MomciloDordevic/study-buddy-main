@@ -36,8 +36,7 @@ const NewSession = (props) => {
           modalRef={props.modalRef}
           onSelectAvatar={props.onSelectAvatar}
           onSaveUserData={saveUserDataHandler}
-          onCancel={stopEditingHandler}
-          onClose={props.onClose}
+          onClose={stopEditingHandler}
         />
       )}
       <ul>
