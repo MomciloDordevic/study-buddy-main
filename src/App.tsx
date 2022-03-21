@@ -13,10 +13,11 @@ import NewTimer from "./Components/Timer/Container.tsx/NewTimer";
 import NewNewTimer from "./Components/Timer/Container.tsx/NewNewTimer";
 import NewSession from "./Components/NewSession/NewSession";
 import { imageArray } from "./Utils/AvatarData";
-import { isPropertySignature } from "typescript";
+
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
+  const [usersList, setUsersList] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState<number>(0);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -32,11 +33,30 @@ function App() {
     console.log("App.tsx", id);
   };
 
+  const saveUserDataHandler = (enteredUserData: string[]) => {
+    const userData = {
+      ...enteredUserData,
+      id: Math.random().toString(),
+    };
+    console.log(userData);
+  };
+
   // const saveUserDataHandler = (uName: string, uUrl: string) => {
   //   setUserData((prevUserData: string[]) => {
   //     return [
   //       ...prevUserData,
   //       { name: uName, age: uUrl, id: Math.random().toString() },
+  //     ];
+  //   });
+  // };
+
+  
+
+  // const addUserHandler = (uName: any, uUrl: any) => {
+  //   setUsersList((prevUsersList) => {
+  //     return [
+  //       ...prevUsersList,
+  //       { name: uName, url: uUrl, id: Math.random().toString() },
   //     ];
   //   });
   // };
@@ -54,7 +74,11 @@ function App() {
       <FormProvider>
         <div className={styles.app}>
           <div className={styles.headerContainer}>
-            <Header modalRef={modalRef} onSelectAvatar={onSelectAvatar} />
+            <Header
+              modalRef={modalRef}
+              onSelectAvatar={onSelectAvatar}
+              {...saveUserDataHandler}
+            />
           </div>
           <Routes>
             {authCtx.isLoggedIn && (
@@ -72,10 +96,13 @@ function App() {
                       <h1>Study Session - ASMR with Eira</h1>
                       <StudyVideo />
                       <NewSession
+                        onAddUser={saveUserDataHandler}
                         modalRef={modalRef}
-                        user={[]}
+                        users={usersList}
                         onSelectAvatar={onSelectAvatar}
+                        onSaveUserData={saveUserDataHandler}
                       />
+                      {/* <StartedSession users={usersList} /> */}
                       {getAvatar()}
                       <Timer timeArray={timeArray} />
                       <NewNewTimer />

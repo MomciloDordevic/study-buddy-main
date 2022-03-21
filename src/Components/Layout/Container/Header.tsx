@@ -34,6 +34,7 @@ function Header({ modalRef, onSelectAvatar }: Props) {
       id: Math.random().toString(),
     };
     console.log(userData);
+    
   };
 
   // const [userData, setUserData] = useState([]);

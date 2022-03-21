@@ -41,13 +41,13 @@ const NewSession = (props) => {
       )}
       <div>
       <ul>
-        {props.user.map((user) => (
-          <li>
+        {props.users.map((user) => (
+          <li key={user.id}>
             {user.name} {user.url}
           </li>
         ))}
       </ul>
-      </div>
+    </div>
     </div>
   );
 };
