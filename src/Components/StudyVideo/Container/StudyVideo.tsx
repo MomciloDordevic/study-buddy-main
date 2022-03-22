@@ -5,7 +5,12 @@ function StudyVideo() {
   return (
     <div className={styles.studyVideo}>
       <div className={styles.iframe}>
+       <form action="action" method="post" target="output_frame">
+          <input type="text"></input>
+        </form>
         <iframe
+          name="output_frame"
+          id="output_frame"
           width="900"
           height="506"
           src="https://www.youtube.com/embed/EdtD6fjGjAk"
