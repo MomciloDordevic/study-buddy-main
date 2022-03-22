@@ -82,7 +82,7 @@ function App() {
           </div>
           <Routes>
             {authCtx.isLoggedIn && (
-              <Route path="/userprofile" element={<UserProfile />} />
+              <Route path="/userprofile" element={<UserProfile onSelectedAvatar={onSelectAvatar}/>} />
             )}
             <Route path="/profileform" element={<ProfileForm />} />
 
