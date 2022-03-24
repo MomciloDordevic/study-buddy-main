@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import styles from "./App.module.css";
 import StudyVideo from "./Components/StudyVideo/Container/StudyVideo";
@@ -13,11 +13,14 @@ import NewTimer from "./Components/Timer/Container.tsx/NewTimer";
 import NewNewTimer from "./Components/Timer/Container.tsx/NewNewTimer";
 import NewSession from "./Components/NewSession/NewSession";
 import { imageArray } from "./Utils/AvatarData";
+import Card from "./Components/UI/Card";
+import Button from "./Components/UI/Button";
+import StudyVideo1 from "./Components/StudyVideo/Container/StudyVideo1";
 
 
 function App() {
   const [timeArray, setTimeArray] = useState<number[]>([0]);
-  const [usersList, setUsersList] = useState([]);
+  const [usersData, setUsersData] = useState([]);
   const [selectedAvatar, setSelectedAvatar] = useState<number>(0);
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -77,9 +80,13 @@ function App() {
             <Header
               modalRef={modalRef}
               onSelectAvatar={onSelectAvatar}
-              {...saveUserDataHandler}
+              // {...saveUserDataHandler}
+              onSaveUserData={saveUserDataHandler}
             />
           </div>
+          {!authCtx.isLoggedIn && (
+              <AuthForm />
+            )}
           <Routes>
             {authCtx.isLoggedIn && (
               <Route path="/userprofile" element={<UserProfile onSelectedAvatar={onSelectAvatar}/>} />
@@ -94,14 +101,20 @@ function App() {
                   {authCtx.isLoggedIn && (
                     <div className={styles.contentContainer}>
                       <h1>Study Session - ASMR with Eira</h1>
+                      <StudyVideo1 />
                       <StudyVideo />
                       <NewSession
                         onAddUser={saveUserDataHandler}
                         modalRef={modalRef}
-                        users={usersList}
+                        users={usersData}
                         onSelectAvatar={onSelectAvatar}
                         onSaveUserData={saveUserDataHandler}
                       />
+                      <Card>
+                        <Button>
+                        <h1>Welcome back!</h1>
+                        </Button>
+                      </Card>
                       {/* <StartedSession users={usersList} /> */}
                       {getAvatar()}
                       <Timer timeArray={timeArray} />

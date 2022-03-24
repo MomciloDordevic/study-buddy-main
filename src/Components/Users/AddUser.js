@@ -89,22 +89,14 @@ const AddUser = (props) => {
       url: enteredUrl,
     };
 
-    console.log(userData);
-
-    // setEnterdNameTouched(true);
+    console.log(userData)
 
     if (!enteredNameIsValid) {
       return;
     }
-
-    // setEnteredName("");
-    // setEnterdNameTouched(false);
     props.onSaveUserData(userData);
     resetNameInput();
     resetUrlInput();
-
-    // setEnteredUrl("");
-    // setEnteredUrlTouched(false);
   };
 
   // const addUserHandler = (event) => {

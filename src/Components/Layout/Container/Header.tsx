@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 type Props = {
   modalRef: RefObject<HTMLDivElement>;
   onSelectAvatar: (id: number) => void;
+  onSaveUserData: (enteredUserData: string[]) => void; // not an String array, its an object
 };
 
 function Header({ modalRef, onSelectAvatar }: Props) {
@@ -34,7 +35,6 @@ function Header({ modalRef, onSelectAvatar }: Props) {
       id: Math.random().toString(),
     };
     console.log(userData);
-    
   };
 
   // const [userData, setUserData] = useState([]);
@@ -64,7 +64,6 @@ function Header({ modalRef, onSelectAvatar }: Props) {
             />
           )}
         </div>
-
         <div className={styles.boxes}>
           {!isLoggedIn && (
             <Link to="/authform">
